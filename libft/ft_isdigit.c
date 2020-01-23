@@ -1,37 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtorvald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/22 21:47:57 by gtorvald          #+#    #+#             */
-/*   Updated: 2019/12/22 21:47:58 by gtorvald         ###   ########.fr       */
+/*   Created: 2019/09/23 13:55:43 by gtorvald          #+#    #+#             */
+/*   Updated: 2019/09/23 13:55:46 by gtorvald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_H
-# define HEADER_H
-
-# include <stdlib.h>
-# include <stdarg.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "libft/libft.h"
-
-typedef struct	s_argumet
+int		ft_isdigit(int c)
 {
-	char		type;
-	char		*flags;
-	int			width;
-	int			precision;
-	char		size;
-}				t_argument;
-
-int				g_count;
-
-int				check(char *str, char sym);
-
-int				ft_printf(const char * restrict format, ...);
-
-#endif
+	return (c >= 48 && c <= 57);
+}

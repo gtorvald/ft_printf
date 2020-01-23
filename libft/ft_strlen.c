@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtorvald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/22 21:47:57 by gtorvald          #+#    #+#             */
-/*   Updated: 2019/12/22 21:47:58 by gtorvald         ###   ########.fr       */
+/*   Created: 2019/09/18 20:05:32 by gtorvald          #+#    #+#             */
+/*   Updated: 2019/09/18 20:05:35 by gtorvald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_H
-# define HEADER_H
+#include <string.h>
 
-# include <stdlib.h>
-# include <stdarg.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "libft/libft.h"
-
-typedef struct	s_argumet
+size_t	ft_strlen(const char *s)
 {
-	char		type;
-	char		*flags;
-	int			width;
-	int			precision;
-	char		size;
-}				t_argument;
+	int i;
+	int result;
 
-int				g_count;
-
-int				check(char *str, char sym);
-
-int				ft_printf(const char * restrict format, ...);
-
-#endif
+	i = 0;
+	result = 0;
+	while (s[i++] != '\0')
+		result++;
+	return ((size_t)result);
+}

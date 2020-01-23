@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtorvald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/22 21:47:57 by gtorvald          #+#    #+#             */
-/*   Updated: 2019/12/22 21:47:58 by gtorvald         ###   ########.fr       */
+/*   Created: 2019/09/18 20:05:43 by gtorvald          #+#    #+#             */
+/*   Updated: 2019/09/18 20:05:48 by gtorvald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_H
-# define HEADER_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdarg.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "libft/libft.h"
-
-typedef struct	s_argumet
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	char		type;
-	char		*flags;
-	int			width;
-	int			precision;
-	char		size;
-}				t_argument;
+	int i;
 
-int				g_count;
-
-int				check(char *str, char sym);
-
-int				ft_printf(const char * restrict format, ...);
-
-#endif
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0')
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}

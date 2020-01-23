@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtorvald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/22 21:47:57 by gtorvald          #+#    #+#             */
-/*   Updated: 2019/12/22 21:47:58 by gtorvald         ###   ########.fr       */
+/*   Created: 2020/01/23 16:58:36 by gtorvald          #+#    #+#             */
+/*   Updated: 2020/01/23 16:58:38 by gtorvald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_H
-# define HEADER_H
-
-# include <stdlib.h>
-# include <stdarg.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "libft/libft.h"
-
-typedef struct	s_argumet
+int		check(char *str, char sym)
 {
-	char		type;
-	char		*flags;
-	int			width;
-	int			precision;
-	char		size;
-}				t_argument;
+	int		i;
 
-int				g_count;
-
-int				check(char *str, char sym);
-
-int				ft_printf(const char * restrict format, ...);
-
-#endif
+	i = 0;
+	while (str[i] != '\0')
+		if (str[i++] == sym)
+		{
+			if (sym != '0')
+				return (1);
+			else if (i - 2 < 0 || (str[i - 2] < '0' || str[i - 2] > '9'))
+				return (1);
+		}
+	return (0);
+}
