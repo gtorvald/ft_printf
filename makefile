@@ -21,7 +21,7 @@ LIB_SRCS = libft/ft_putstr.c libft/ft_putchar.c libft/ft_atoi.c \
 LIB_OBJS = ft_putstr.o ft_putchar.o ft_atoi.o ft_strlen.o ft_strcmp.o \
 	ft_strncmp.o ft_strcpy.o ft_strncpy.o ft_isdigit.o
 
-SRCS = printf.c check.c main.c
+SRCS = printf.c stuff.c main.c char.c
 
 OBJS = $(SRCS:.c=.o)
 

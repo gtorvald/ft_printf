@@ -27,8 +27,8 @@ t_argument	get_info_about_argument(const char *format, va_list ap)
 	i = 0;
 	while (check("+- #0", format[i]))
 		i++;
-	argument.flags = malloc(sizeof(char) * i);
-	argument.flags[i - 1] = '\0';
+	argument.flags = malloc(sizeof(char) * (i + 1));
+	argument.flags[i] = '\0';
 	ft_strncpy(argument.flags, format, i);
 	argument.width = get_number_from_string(format + i, ap);
 	while (!check("%scpdiouxXfLhl", format[i]))
@@ -52,24 +52,27 @@ int			main_function(const char *format, va_list ap)
 	int			count;
 
 	argument = get_info_about_argument(format + 1, ap);
-	printf("flags(%s)\n", argument.flags);
-	printf("wigth(%d)\n", argument.width);
-	printf("precision(%d)\n", argument.precision);
-	printf("size(%c)\n", argument.size);
-	printf("type(%c)\n", argument.type);
+	//printf("flags(%s)\n", argument.flags);
+	//printf("wigth(%d)\n", argument.width);
+	//printf("precision(%d)\n", argument.precision);
+	//printf("size(%c)\n", argument.size);
+	//printf("type(%c)\n", argument.type);
+	if (check("%sc", argument.type))
+		print_char(argument, ap);
 	count = 1;
 	while (format[count] != argument.type)
 		count++;
+	free(argument.flags);
 	return (count);
 }
 
-int			ft_printf(const char * restrict format, ...)
+int			ft_printf(const char *restrict format, ...)
 {
 	va_list	ap;
 
 	g_count = 0;
 	va_start(ap, format);
-	while(*format != '\0')
+	while (*format != '\0')
 	{
 		if (*format == '%')
 			format += main_function(format, ap);

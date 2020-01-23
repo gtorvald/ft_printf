@@ -32,6 +32,8 @@ int				g_count;
 
 int				check(char *str, char sym);
 
-int				ft_printf(const char * restrict format, ...);
+void			print_char(t_argument argument, va_list ap);
+
+int				ft_printf(const char *restrict format, ...);
 
 #endif
