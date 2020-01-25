@@ -31,8 +31,10 @@ typedef struct	s_argumet
 int				g_count;
 
 int				check(char *str, char sym);
+char			*ft_itoa_un(unsigned long long int n, int system);
 
 void			print_char(t_argument argument, va_list ap);
+void			print_integer_number(t_argument argument, va_list ap);
 
 int				ft_printf(const char *restrict format, ...);
 

@@ -24,6 +24,7 @@ t_argument	get_info_about_argument(const char *format, va_list ap)
 	t_argument	argument;
 	int			i;
 
+	argument.size = '0';
 	i = 0;
 	while (check("+- #0", format[i]))
 		i++;
@@ -59,6 +60,8 @@ int			main_function(const char *format, va_list ap)
 	//printf("type(%c)\n", argument.type);
 	if (check("%sc", argument.type))
 		print_char(argument, ap);
+	else if (check("diouxX", argument.type))
+		print_integer_number(argument, ap);
 	count = 1;
 	while (format[count] != argument.type)
 		count++;
