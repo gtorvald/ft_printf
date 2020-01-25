@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include "libft/libft.h"
+# include "libftbonus/libftbonus.h"
 
 typedef struct	s_argumet
 {
@@ -31,11 +32,12 @@ typedef struct	s_argumet
 int				g_count;
 
 int				check(char *str, char sym);
-char			*ft_itoa_un(unsigned long long int n, int system);
+void			print_symbols(t_argument argument, int count);
 
 void			print_char(t_argument argument, va_list ap);
 void			print_integer_number(t_argument argument, va_list ap);
 
+t_argument		get_info_about_argument(const char *format, va_list ap);
 int				ft_printf(const char *restrict format, ...);
 
 #endif

@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ftb_putstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtorvald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/18 20:05:32 by gtorvald          #+#    #+#             */
-/*   Updated: 2019/09/18 20:05:35 by gtorvald         ###   ########.fr       */
+/*   Created: 2020/01/25 20:40:45 by gtorvald          #+#    #+#             */
+/*   Updated: 2020/01/25 20:40:47 by gtorvald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "../libft/libft.h"
+#include "../header.h"
 
-size_t	ft_strlen(const char *s)
+void	ftb_putstr(char *str)
 {
-	int i;
-	int result;
-
-	if (!s)
-		return (0);
-	i = 0;
-	result = 0;
-	while (s[i++] != '\0')
-		result++;
-	return ((size_t)result);
+	g_count += ft_strlen(str);
+	ft_putstr(str);
 }

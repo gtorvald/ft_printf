@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   libftbonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtorvald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/18 20:05:32 by gtorvald          #+#    #+#             */
-/*   Updated: 2019/09/18 20:05:35 by gtorvald         ###   ########.fr       */
+/*   Created: 2020/01/25 20:46:47 by gtorvald          #+#    #+#             */
+/*   Updated: 2020/01/25 20:46:49 by gtorvald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#ifndef LIBFTBONUS_H
+# define LIBFTBONUS_H
 
-size_t	ft_strlen(const char *s)
-{
-	int i;
-	int result;
+char		*ft_itoa_un(unsigned long long int n, int system);
+void		ftb_putstr(char *str);
+void		ftb_nputstr(char *str, int n);
+int			ftb_putchar(char c);
 
-	if (!s)
-		return (0);
-	i = 0;
-	result = 0;
-	while (s[i++] != '\0')
-		result++;
-	return ((size_t)result);
-}
+#endif

@@ -17,16 +17,19 @@ void	print_string(t_argument argument, char *string)
 	int		len;
 
 	len = ft_strlen(string);
+	if (argument.precision != -1)
+		len = argument.precision;
 	if (!check(argument.flags, '-'))
 		while (argument.width-- - len > 0)
-			ft_putchar(' ');
-	ft_putstr(string);
-	while (argument.width-- - len > 0)
-		ft_putchar(' ');
-	if (argument.width > len)
-		g_count += argument.width;
+			ftb_putchar(' ');
+	if (argument.precision != -1)
+		ftb_nputstr(string, argument.precision);
+	else if (string != NULL)
+		ftb_putstr(string);
 	else
-		g_count += len;
+		ftb_putstr("(null)");
+	while (argument.width-- - len > 0)
+		ftb_putchar(' ');
 }
 
 void	print_char(t_argument argument, va_list ap)

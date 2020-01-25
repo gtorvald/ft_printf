@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
+#include "header.h"
+
 int		check(char *str, char sym)
 {
 	int		i;
@@ -24,4 +27,18 @@ int		check(char *str, char sym)
 				return (1);
 		}
 	return (0);
+}
+
+void	print_symbols(t_argument argument, int count)
+{
+	if ((argument.type == 'x' || argument.type == 'X')
+		&& check(argument.flags, '#'))
+		count -= 2;
+	if (argument.type == 'o' && check(argument.flags, '#'))
+		count--;
+	while (count-- > 0)
+		if (check(argument.flags, '0') && !check(argument.flags, '-'))
+			ftb_putchar('0');
+		else
+			ftb_putchar(' ');
 }

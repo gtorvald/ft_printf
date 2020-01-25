@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtorvald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/18 20:05:32 by gtorvald          #+#    #+#             */
-/*   Updated: 2019/09/18 20:05:35 by gtorvald         ###   ########.fr       */
+/*   Created: 2019/09/23 14:05:24 by gtorvald          #+#    #+#             */
+/*   Updated: 2019/09/23 14:05:24 by gtorvald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-
-size_t	ft_strlen(const char *s)
+int		ft_toupper(int c)
 {
-	int i;
-	int result;
-
-	if (!s)
-		return (0);
-	i = 0;
-	result = 0;
-	while (s[i++] != '\0')
-		result++;
-	return ((size_t)result);
+	if (c >= 97 && c <= 122)
+		return (c + 'A' - 'a');
+	return (c);
 }
