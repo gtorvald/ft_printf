@@ -3,9 +3,11 @@
 
 int 	main(void)
 {
-	ft_printf("%#X\n", 42);
+	ft_printf("%.2s is a string\n", "");
+	ft_printf("%-.2s is a string\n", "");
+	ft_printf("(%.2s)\n", "a");
 	ft_printf("=== TEST ===\n");
-	printf("%#X\n", 42);
+	printf("%.2s is a string\n", "");
+	printf("%-.2s is a string\n", "");
+	printf("(%.2s)\n", "a");
 }
-
-// %p = %#lx

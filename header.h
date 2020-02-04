@@ -32,7 +32,9 @@ typedef struct	s_argumet
 int				g_count;
 
 int				check(char *str, char sym);
-void			print_symbols(t_argument argument, int count);
+void			print_indentantion(t_argument argument, char *num);
+void			print_symbols(char symbol, int count);
+void			print_alternative_form(t_argument arg, char *num, int flag);
 
 void			print_char(t_argument argument, va_list ap);
 void			print_integer_number(t_argument argument, va_list ap);

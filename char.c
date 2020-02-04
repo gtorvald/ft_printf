@@ -17,7 +17,7 @@ void	print_string(t_argument argument, char *string)
 	int		len;
 
 	len = ft_strlen(string);
-	if (argument.precision != -1)
+	if (argument.precision != -1 && len > argument.precision)
 		len = argument.precision;
 	if (!check(argument.flags, '-'))
 		while (argument.width-- - len > 0)

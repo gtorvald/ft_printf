@@ -53,33 +53,47 @@ char	*get_string_of_unsigned_number(t_argument argument, va_list ap)
 	return (num);
 }
 
+void	print_sign_of_number(t_argument arg, char *num, int flag)
+{
+	int		count;
+
+	count = ft_strlen(num);
+	if (arg.precision + (*num == '-') > count)
+		count = arg.precision + (*num == '-');
+	if (!flag)
+	{
+		if (*num == '-' && (check(arg.flags, '0') ||
+			(int)ft_strlen(num) - 1 <= arg.precision))
+			ftb_putchar('-');
+		else if (check("di", arg.type) && *num != '-' && check(arg.flags, '+') &&
+			((check(arg.flags, '0') && arg.width > count) || arg.width <= count))
+			ftb_putchar('+');
+		else if (check("di", arg.type) && *num != '-' && check(arg.flags, ' '))
+			if ((int)ft_strlen(num) > arg.precision)
+				ftb_putchar(' ');	
+	}
+	else
+		if (check("di", arg.type) && *num != '-' && check(arg.flags, '+') &&
+			(!check(arg.flags, '0') || arg.width < count) && arg.width > count)
+			ftb_putchar('+');
+}
+
 void	print_flags_and_number(t_argument arg, char *num)
 {
-	if (*num == '-' && check(arg.flags, '0'))
-		ftb_putchar('-');
-	if ((arg.type == 'x' || arg.type == 'X') && check(arg.flags, '#') &&
-		(check(arg.flags, '-') || check(arg.flags, '0')))
-	{
-		ftb_putchar('0');
-		ftb_putchar(arg.type);
-	}
-	if (arg.type == 'o' && check(arg.flags, '#') && (check(arg.flags, '-') ||
-		check(arg.flags, '0')))
-		ftb_putchar('0');
+	print_sign_of_number(arg, num, 0);
+	print_alternative_form(arg, num, 0);
 	if (!check(arg.flags, '-'))
-		print_symbols(arg, arg.width - ft_strlen(num));
-	if ((arg.type == 'x' || arg.type == 'X') && check(arg.flags, '#') &&
-		(!check(arg.flags, '-') && !check(arg.flags, '0')))
-	{
-		ftb_putchar('0');
-		ftb_putchar(arg.type);
-	}
-	if (arg.type == 'o' && check(arg.flags, '#') && (!check(arg.flags, '-')
-		&& !check(arg.flags, '0')))
-		ftb_putchar('0');
-	ftb_putstr(num + (*num == '-' && check(arg.flags, '0')));
+		print_indentantion(arg, num);
+	print_alternative_form(arg, num, 1);
+	print_sign_of_number(arg, num, 1);
+	print_symbols('0', arg.precision - ft_strlen(num) + (*num == '-'));
+	if (!ft_strcmp(num, "0") && arg.precision == 0 && arg.width > 0)
+		ftb_putchar(' ');
+	else if (ft_strcmp(num, "0") || arg.precision != 0)
+		ftb_putstr(num + (*num == '-' && (check(arg.flags, '0') ||
+		(int)ft_strlen(num) - 1 <= arg.precision)));
 	if (check(arg.flags, '-'))
-		print_symbols(arg, arg.width - ft_strlen(num));
+		print_indentantion(arg, num);
 }
 
 void	print_integer_number(t_argument argument, va_list ap)
@@ -90,6 +104,8 @@ void	print_integer_number(t_argument argument, va_list ap)
 	if (argument.type == 'p')
 	{
 		help_arg = get_info_about_argument("#lx", ap);
+		help_arg.width = argument.width;
+		help_arg.precision = argument.precision;
 		print_integer_number(help_arg, ap);
 		free(help_arg.flags);
 		return ;

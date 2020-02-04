@@ -26,9 +26,4 @@ void	ftb_nputstr(char *str, int n)
 		str++;
 		n--;
 	}
-	while (n > 0)
-	{
-		ftb_putchar(' ');
-		n--;
-	}
 }
