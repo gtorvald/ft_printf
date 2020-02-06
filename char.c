@@ -16,6 +16,11 @@ void	print_string(t_argument argument, char *string)
 {
 	int		len;
 
+	if (!string)
+	{
+		string = malloc(sizeof(char) * 7);
+		ft_strcpy(string, "(null)\0");
+	}
 	len = ft_strlen(string);
 	if (argument.precision != -1 && len > argument.precision)
 		len = argument.precision;
@@ -24,12 +29,12 @@ void	print_string(t_argument argument, char *string)
 			ftb_putchar(' ');
 	if (argument.precision != -1)
 		ftb_nputstr(string, argument.precision);
-	else if (string != NULL)
-		ftb_putstr(string);
 	else
-		ftb_putstr("(null)");
+		ftb_putstr(string);
 	while (argument.width-- - len > 0)
 		ftb_putchar(' ');
+	if (!ft_strcmp(string, "(null"))
+		free(string);
 }
 
 void	print_char(t_argument argument, va_list ap)

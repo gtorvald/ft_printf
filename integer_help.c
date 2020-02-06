@@ -5,17 +5,20 @@ void	print_indentantion(t_argument arg, char *num)
 	int		count;
 
 	count = ft_strlen(num);
-	if (check("di", arg.type) && *num != '-' && check(arg.flags, ' '))
-		if ((int)ft_strlen(num) > arg.precision)
-			arg.width--;
 	if (arg.precision + (*num == '-') > count)
 		count = arg.precision + (*num == '-');
-	if ((arg.type == 'x' || arg.type == 'X') && check(arg.flags, '#'))
+	if ((arg.type == 'x' || arg.type == 'X') && check(arg.flags, '#')
+		&& ft_strcmp(num, "0"))
 		count += 2;
-	if (arg.type == 'o' && check(arg.flags, '#'))
+	if (arg.type == 'o' && check(arg.flags, '#') && ft_strcmp(num, "0"))
 		count++;
 	if (*num != '-' && check(arg.flags, '+'))
 		count++;
+	else if (*num != '-' && check("di", arg.type) && check(arg.flags, ' ')
+		&& (arg.width <= count + 2 || check(arg.flags, '-')))
+		count++;
+	if (!ft_strcmp(num, "0") && arg.precision == 0 && arg.width > 0)
+		count--;
 	if (check(arg.flags, '0') && !check(arg.flags, '-') && arg.precision == -1)
 		print_symbols('0', arg.width - count);
 	else
@@ -62,15 +65,16 @@ void	print_sign_of_number_frst(t_argument arg, char *num)
 	count = ft_strlen(num);
 	if (arg.precision + (*num == '-') > count)
 		count = arg.precision + (*num == '-');
-	if (*num == '-' && (check(arg.flags, '0') ||
-		(((int)ft_strlen(num) - 1 <= arg.precision) &&
-		arg.width <= arg.precision)))
-		ftb_putchar('-');
-	else if (check("di", arg.type) && *num != '-' && check(arg.flags, '+') &&
+	if (*num == '-')
+	{
+		if (check(arg.flags, '0') && arg.width > (int)ft_strlen(num) && arg.precision == -1)
+			ftb_putchar('-');
+	}
+	else if (check("di", arg.type) && check(arg.flags, '+') &&
 		((check(arg.flags, '0') && arg.width > count) || arg.width <= count))
 		ftb_putchar('+');
-	else if (check("di", arg.type) && *num != '-' && check(arg.flags, ' '))
-		if ((int)ft_strlen(num) > arg.precision)
+	else if (check("di", arg.type) && !check(arg.flags, '+') && check(arg.flags, ' '))
+		if (arg.width <= count + 2 || check(arg.flags, '-'))
 			ftb_putchar(' ');
 }
 
@@ -81,10 +85,9 @@ void	print_sign_of_number_scnd(t_argument arg, char *num)
 	count = ft_strlen(num);
 	if (arg.precision + (*num == '-') > count)
 		count = arg.precision + (*num == '-');
-	if (*num == '-' && !check(arg.flags, '0') &&
-		(int)ft_strlen(num) - 1 <= arg.precision &&
-		arg.width > arg.precision)
-		ftb_putchar('-');
+	if (*num == '-')
+		if (!check(arg.flags, '0') || arg.width <= (int)ft_strlen(num) || arg.precision != -1)
+			ftb_putchar('-');
 	if (check("di", arg.type) && *num != '-' && check(arg.flags, '+') &&
 		(!check(arg.flags, '0') || arg.width < count) && arg.width > count)
 		ftb_putchar('+');

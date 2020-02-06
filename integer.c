@@ -57,6 +57,8 @@ void	print_pointer(t_argument arg, char *num)
 {
 	if (check(arg.flags, '-') || check(arg.flags, '0'))
 		ftb_putstr("0x");
+	if (!ft_strcmp(num, "0"))
+		arg.width -= 2;
 	if (!check(arg.flags, '-'))
 		print_indentantion(arg, num);
 	if (!check(arg.flags, '-') && !check(arg.flags, '0'))
@@ -77,11 +79,9 @@ void	print_flags_and_number(t_argument arg, char *num)
 	print_alternative_form(arg, num, 1);
 	print_sign_of_number_scnd(arg, num);
 	print_symbols('0', arg.precision - ft_strlen(num) + (*num == '-'));
-	if (!ft_strcmp(num, "0") && arg.precision == 0 && arg.width > 0)
-		ftb_putchar(' ');
-	else if (ft_strcmp(num, "0") || arg.precision != 0)
-		ftb_putstr(num + (*num == '-' && (check(arg.flags, '0') ||
-		(int)ft_strlen(num) - 1 <= arg.precision)));
+	if (ft_strcmp(num, "0") || arg.precision != 0 || arg.width <= 0)
+		if (ft_strcmp(num, "0") || arg.precision != 0)
+		ftb_putstr(num + (*num == '-'));
 	if (check(arg.flags, '-'))
 		print_indentantion(arg, num);
 }
