@@ -54,15 +54,10 @@ int			main_function(const char *format, va_list ap)
 	int			count;
 
 	argument = get_info_about_argument(format + 1, ap);
-	//printf("flags(%s)\n", argument.flags);
-	//printf("wigth(%d)\n", argument.width);
-	//printf("precision(%d)\n", argument.precision);
-	//printf("size(%c)\n", argument.size);
-	//printf("type(%c)\n", argument.type);
 	if (check("%sc", argument.type))
 		print_char(argument, ap);
 	else if (check("pdiouxX", argument.type))
-		print_integer_number(argument, ap);
+		print_integer_number(&argument, ap);
 	count = 1;
 	while (format[count] != argument.type)
 		count++;
@@ -78,9 +73,9 @@ int			ft_printf(const char *restrict format, ...)
 	va_start(ap, format);
 	while (*format != '\0')
 	{
-		if (*format == '%')
+		if (*format == '%' && *(format + 1) != '\0')
 			format += main_function(format, ap);
-		else
+		else if (*format != '%')
 			ftb_putchar(*format);
 		format++;
 	}

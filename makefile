@@ -26,7 +26,7 @@ LIB_OBJS = ft_putstr.o ft_putchar.o ft_atoi.o ft_strlen.o ft_strcmp.o \
 	\
 	ftb_itoa_unsigned.o ftb_putchar.o ftb_putstr.o ftb_nputstr.o
 
-SRCS = printf.c stuff.c char.c integer.c
+SRCS = printf.c stuff.c char.c integer.c integer_help.c
 
 OBJS = $(SRCS:.c=.o)
 

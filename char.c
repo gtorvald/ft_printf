@@ -44,6 +44,11 @@ void	print_char(t_argument argument, va_list ap)
 			string[0] = '%';
 		else
 			string[0] = (char)va_arg(ap, int);
+		if (!ft_strcmp(string, ""))
+		{
+			argument.width--;
+			g_count++;
+		}
 		print_string(argument, string);
 		free(string);
 	}

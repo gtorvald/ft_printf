@@ -3,11 +3,7 @@
 
 int 	main(void)
 {
-	ft_printf("%.2s is a string\n", "");
-	ft_printf("%-.2s is a string\n", "");
-	ft_printf("(%.2s)\n", "a");
+	printf("%d\n", ft_printf("%.p, %.0p", 0, 0));
 	ft_printf("=== TEST ===\n");
-	printf("%.2s is a string\n", "");
-	printf("%-.2s is a string\n", "");
-	printf("(%.2s)\n", "a");
+	printf("%d\n", printf("{%f}{%lf}{%Lf}", 1.42, 1.42, 1.42l));
 }
