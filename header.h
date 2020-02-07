@@ -35,7 +35,8 @@ int				check(char *str, char sym);
 void			print_symbols(char symbol, int count);
 
 void			print_indentantion(t_argument argument, char *num);
-void			print_alternative_form(t_argument arg, char *num, int flag);
+void			print_alternative_form_frst(t_argument arg, char *num);
+void			print_alternative_form_scnd(t_argument arg, char *num);
 void			print_sign_of_number_frst(t_argument arg, char *num);
 void			print_sign_of_number_scnd(t_argument arg, char *num);
 

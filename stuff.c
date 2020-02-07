@@ -31,6 +31,6 @@ int		check(char *str, char sym)
 
 void	print_symbols(char symbol, int count)
 {
-	while(count-- > 0)
+	while (count-- > 0)
 		ftb_putchar(symbol);
 }

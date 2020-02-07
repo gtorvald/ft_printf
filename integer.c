@@ -73,15 +73,15 @@ void	print_pointer(t_argument arg, char *num)
 void	print_flags_and_number(t_argument arg, char *num)
 {
 	print_sign_of_number_frst(arg, num);
-	print_alternative_form(arg, num, 0);
+	print_alternative_form_frst(arg, num);
 	if (!check(arg.flags, '-'))
 		print_indentantion(arg, num);
-	print_alternative_form(arg, num, 1);
+	print_alternative_form_scnd(arg, num);
 	print_sign_of_number_scnd(arg, num);
 	print_symbols('0', arg.precision - ft_strlen(num) + (*num == '-'));
 	if (ft_strcmp(num, "0") || arg.precision != 0 || arg.width <= 0)
 		if (ft_strcmp(num, "0") || arg.precision != 0)
-		ftb_putstr(num + (*num == '-'));
+			ftb_putstr(num + (*num == '-'));
 	if (check(arg.flags, '-'))
 		print_indentantion(arg, num);
 }
