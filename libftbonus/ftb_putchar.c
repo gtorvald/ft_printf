@@ -13,8 +13,8 @@
 #include "../libft/libft.h"
 #include "../header.h"
 
-int		ftb_putchar(char c)
+int		ftb_putchar(unsigned char c)
 {
 	g_count++;
-	return (ft_putchar(c));
+	return (write(1, &c, 1));
 }

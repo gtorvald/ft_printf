@@ -27,13 +27,15 @@ void	print_string(t_argument argument, char *string)
 	if (!check(argument.flags, '-'))
 		while (argument.width-- - len > 0)
 			ftb_putchar(' ');
-	if (argument.precision != -1)
+	if (argument.precision != -1 && argument.type == 's')
 		ftb_nputstr(string, argument.precision);
+	else if (argument.type == 'c' && !ft_strcmp(string, ""))
+		ftb_putchar(0);
 	else
 		ftb_putstr(string);
 	while (argument.width-- - len > 0)
 		ftb_putchar(' ');
-	if (!ft_strcmp(string, "(null"))
+	if (!ft_strcmp(string, "(null)"))
 		free(string);
 }
 
@@ -49,11 +51,8 @@ void	print_char(t_argument argument, va_list ap)
 			string[0] = '%';
 		else
 			string[0] = (char)va_arg(ap, int);
-		if (!ft_strcmp(string, ""))
-		{
+		if (!ft_strcmp(string, "") && argument.width > 0)
 			argument.width--;
-			g_count++;
-		}
 		print_string(argument, string);
 		free(string);
 	}

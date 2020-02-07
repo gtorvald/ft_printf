@@ -16,6 +16,6 @@
 char		*ft_itoa_un(unsigned long long int n, int system);
 void		ftb_putstr(char *str);
 void		ftb_nputstr(char *str, int n);
-int			ftb_putchar(char c);
+int			ftb_putchar(unsigned char c);
 
 #endif

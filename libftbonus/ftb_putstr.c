@@ -15,6 +15,9 @@
 
 void	ftb_putstr(char *str)
 {
-	g_count += ft_strlen(str);
-	ft_putstr(str);
+	while (*str != '\0')
+	{
+		ftb_putchar(*str);
+		str++;
+	}
 }
