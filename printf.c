@@ -58,6 +58,8 @@ int			main_function(const char *format, va_list ap)
 		print_char(argument, ap);
 	else if (check("pdiouxX", argument.type))
 		print_integer_number(&argument, ap);
+	else if (argument.type == 'f')
+		print_double(argument, ap);
 	count = 1;
 	while (format[count] != argument.type)
 		count++;

@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtorvald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 18:27:49 by gtorvald          #+#    #+#             */
-/*   Updated: 2020/02/07 18:27:51 by gtorvald         ###   ########.fr       */
+/*   Created: 2019/09/23 13:58:47 by gtorvald          #+#    #+#             */
+/*   Updated: 2019/09/23 13:58:49 by gtorvald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "header.h"
-
-int		main(void)
+char	*ft_strcat(char *restrict s1, const char *restrict s2)
 {
-	ft_printf("% f\n", 1.42);
-	ft_printf("=== TEST ===\n");
-	printf("% f\n", 1.42);
-	return (0);
+	int		i;
+	int		j;
+
+	i = 0;
+	while (s1[i] != '\0')
+		i++;
+	j = 0;
+	while (s2[j] != '\0')
+	{
+		s1[i + j] = s2[j];
+		j++;
+	}
+	s1[i + j] = '\0';
+	return (s1);
 }
