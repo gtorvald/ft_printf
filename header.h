@@ -40,10 +40,13 @@ void			print_alternative_form_scnd(t_argument arg, char *num);
 void			print_sign_of_number_frst(t_argument arg, char *num);
 void			print_sign_of_number_scnd(t_argument arg, char *num);
 void			print_flags_and_number(t_argument arg, char *num);
+void			print_flags_and_number_float(t_argument arg, char *number,
+int sign);
 
 void			print_char(t_argument argument, va_list ap);
 void			print_integer_number(t_argument *argument, va_list ap);
 void			print_double(t_argument arg, va_list ap);
+void			print_double_l(t_argument arg, va_list ap);
 
 t_argument		get_info_about_argument(const char *format, va_list ap);
 int				ft_printf(const char *restrict format, ...);

@@ -15,8 +15,8 @@
 
 int		main(void)
 {
-	ft_printf("% f\n", 1.42);
+	//ft_printf("{%s}{%lf}{%Lf}\n", 1);
 	ft_printf("=== TEST ===\n");
-	printf("% f\n", 1.42);
+	printf("{%s}{%lf}{%Lf}\n", 1);
 	return (0);
 }

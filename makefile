@@ -14,19 +14,13 @@ CC = gcc
 
 CFLAGS = -c -Wextra -Wall -Werror
 
-#LIB_SRCS = libft/ft_putstr.c libft/ft_putchar.c libft/ft_atoi.c \
-#	libft/ft_strlen.c libft/ft_strcmp.c libft/ft_strncmp.c libft/ft_strcpy.c \
-#	libft/ft_strncpy.c libft/ft_isdigit.c libft/ft_itoa.c \
-#	\
-#	libftbonus/ftb_itoa_unsigned.c
-
 LIB_OBJS = ft_putstr.o ft_putchar.o ft_atoi.o ft_strlen.o ft_strcmp.o \
 	ft_strncmp.o ft_strcpy.o ft_strncpy.o ft_isdigit.o ft_itoa.o \
 	ft_toupper.o ft_strcat.o\
 	\
 	ftb_itoa_unsigned.o ftb_putchar.o ftb_putstr.o ftb_nputstr.o 
 
-SRCS = printf.c stuff.c char.c integer.c integer_help.c double.c
+SRCS = printf.c stuff.c char.c integer.c integer_help.c double.c double_help.c
 
 OBJS = $(SRCS:.c=.o)
 
