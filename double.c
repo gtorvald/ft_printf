@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   double.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gtorvald <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/13 13:38:39 by gtorvald          #+#    #+#             */
+/*   Updated: 2020/02/13 13:38:41 by gtorvald         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
 
 char	*make_rounding(char **old_result, int i)
@@ -45,12 +57,10 @@ int sign)
 		num *= 10;
 		result[i++] = (long long int)num % 10 + '0';
 		if (precision == 0)
-		{
 			if ((!sign && (long long int)(num * 10) % 10 > 4) ||
 			(sign && (long long int)(num * 10) % 10 > 5) ||
 			(sign && (long long int)(num * 10) % 10 > 4 && prec == 1))
 				result = make_rounding(&result, i);
-		}
 	}
 	return (result);
 }
@@ -110,8 +120,7 @@ void	print_double(t_argument arg, va_list ap)
 	num = num - (long long int)num;
 	if (arg.precision != 0)
 		number = get_fractional_part(arg.precision, num, &number, sign);
-	print_flags_and_number_float(arg, number, sign);
-	free(number);
+	print_flags_and_number_float(arg, &number, sign);
 }
 
 void	print_double_l(t_argument arg, va_list ap)
@@ -140,6 +149,5 @@ void	print_double_l(t_argument arg, va_list ap)
 	lnum = lnum - (long long int)lnum;
 	if (arg.precision != 0)
 		number = get_fractional_part_l(arg.precision, lnum, &number, sign);
-	print_flags_and_number_float(arg, number, sign);
-	free(number);
+	print_flags_and_number_float(arg, &number, sign);
 }

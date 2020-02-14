@@ -29,7 +29,6 @@ NAME = libftprintf.a
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIB_OBJS)
-	#$(CC) -o $(NAME) $(OBJS) $(LIB_OBJS)
 	ar rc $(NAME) $(LIB_OBJS) $(OBJS)
 	ranlib $(NAME)
 

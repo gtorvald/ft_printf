@@ -40,7 +40,7 @@ void			print_alternative_form_scnd(t_argument arg, char *num);
 void			print_sign_of_number_frst(t_argument arg, char *num);
 void			print_sign_of_number_scnd(t_argument arg, char *num);
 void			print_flags_and_number(t_argument arg, char *num);
-void			print_flags_and_number_float(t_argument arg, char *number,
+void			print_flags_and_number_float(t_argument arg, char **number,
 int sign);
 
 void			print_char(t_argument argument, va_list ap);
